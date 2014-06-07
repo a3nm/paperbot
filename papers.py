@@ -17,7 +17,7 @@ from StringIO import StringIO
 import pdfparanoia
 
 def download_proxy(line, zotero, proxy, verbose=True):
-    sys.stderr.write("attempting download of %s through %s and %s\n" %
+    sys.stderr.write("tente de télécharger %s through %s and %s\n" %
         (line, zotero, proxy))
 
     headers = {
@@ -160,7 +160,7 @@ def download(line, verbose=True):
         if not ok:
             s = download_url(line, params.servers[0][1], last_resort=True)
             if s != 0:
-              print "couldn't get it at all :("
+              print "impossible de l'obtenir :-("
 
     return
 
@@ -355,7 +355,7 @@ def download_url(url, proxy, last_resort=False):
     else:
         sys.stderr.write("couldn't find it, dump: %s\n" % url)
         if last_resort:
-            print "couldn't find it, dump: %s" % url
+          print "pas possible de le trouver, dump: %s" % url
         else:
             return 1
     return 0
@@ -457,7 +457,7 @@ if __name__ == '__main__':
       if len(reqs) > params.thresh:
         delay = time() - reqs[len(reqs) - params.thresh + 1]
         if params.limit - delay > 0:
-            print "rate limit exceeded, try again in %d second(s)" % (params.limit - delay)
+            print "requêtes trop rapides, réessayez dans %d seconde(s)" % (params.limit - delay)
       else:
         download(l)
 
